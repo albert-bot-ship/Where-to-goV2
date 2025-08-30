@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>地點導航</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="overlay">
+    <h1>🚗 我的專屬地點導航</h1>
+    <p>快速搜尋、立即導航，讓出行更方便</p>
+  </div>
+</header>
+
+<main>
+  <!-- 搜尋區 -->
+  <section class="section search-box">
+    <h2>搜尋地點</h2>
+    <div class="search-wrapper">
+      <input type="text" id="location" placeholder="輸入地點名稱">
+      <button id="navigateBtn">
+        <img src="https://img.icons8.com/ios-filled/50/000000/search--v1.png" alt="搜尋">
+      </button>
+      <ul id="suggestions"></ul>
+    </div>
+  </section>
+
+  <!-- 快速導航卡片 -->
+  <section class="section quick-nav">
+    <h2>常用地點</h2>
+    <div class="card-grid">
+      <div class="feature-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUTV-xwQm12X0HkQ2MZQz4XUzJVY-LM2-TIQ&s" alt="文英">
+        <p>文英宿舍</p>
+      </div>
+      <div class="feature-card">
+        <img src="https://hips.hearstapps.com/hmg-prod/images/fotjjenojet-1635314120.jpg?crop=0.498xw:0.993xh;0,0&resize=640:*" alt="停車場">
+        <p>上班停車</p>
+      </div>
+      <div class="feature-card">
+        <img src="https://www.bmwhk.com/content/dam/bmw/common/all-models/m-series/x6m/2019/inspire/bmw-x6-m-inspire-next-page-teaser.jpg" alt="停車場">
+        <p>下班停車</p>
+      </div>
+      <div class="feature-card">
+        <img src="https://www.mansory.com/cdn-cgi/image/format=avif,quality=90/https://cdn.prod.website-files.com/661d6e0d2e84ef511db18f17/6818bd66e807a051a942382a_Audi%2520RS7-Exterior_-_Main_image-001.webp" alt="停車場">
+        <p>五權立體停車場</p>
+      </div>
+      <div class="feature-card">
+        <img src="https://hips.hearstapps.com/hmg-prod/images/2025-mercedes-amg-g63-180-6890d45ec2f03.jpg?crop=0.735xw:0.551xh;0.0911xw,0.376xh&resize=640:*" alt="公司">
+        <p>公司</p>
+      </div>
+      <div class="feature-card">
+        <img src="https://img.supermoto8.com/images/article/f4fa4085782163a406053cd6769c5fd22.jpg" alt="回家">
+        <p>家</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-container">
+    <p>©2025</p>
+    <div class="social-icons">
+      <a href="#"><img src="https://img.icons8.com/ios-filled/50/ffffff/facebook-new.png" alt="Facebook"></a>
+      <a href="#"><img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" alt="Instagram"></a>
+      <a href="#"><img src="https://img.icons8.com/ios-filled/50/ffffff/discord-logo.png" alt="Discord"></a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
