@@ -1,15 +1,24 @@
-/* 整體配色 */
+/* ============================
+   整體配色
+   ============================ */
 body {
   background-color: #fdf6f0;
-  color: #2a5d34;
+  color: #00117C;
   font-family: 'Helvetica Neue', sans-serif;
   margin: 0;
+  box-sizing: border-box;
 }
 
-/* 頁首大圖 */
+*, *::before, *::after {
+  box-sizing: border-box; /* 防止 padding 造成溢出 */
+}
+
+/* ============================
+   頁首大圖（合併重複宣告）
+   ============================ */
 .hero {
   position: relative;
-  background-image: url("https://www.bmw-m.com/content/dam/bmw/marketBMW_M/www_bmw-m_com/topics/m-wallpaper/bmw-m4-cs-sd-03.jpg?imwidth=1440");
+  background-image: url("https://images3.kingautos.net/2017/09/14/A5LacfQz3vOJSRU.jpg");
   background-size: cover;
   background-position: center;
   height: 50vh;
@@ -19,96 +28,131 @@ body {
 }
 
 .hero .overlay {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.2);
   padding: 2rem;
   border-radius: 1rem;
   text-align: center;
   color: #fff;
 }
 
-.hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
+/* ============================
+   主容器
+   ============================ */
+.main-container {
+  display: flex;
+  width: 100%;
 }
 
-.hero p {
-  font-size: 1.2rem;
+/* ============================
+   側欄
+   ============================ */
+.sidebar {
+  width: 180px;
+  padding: 1rem;
+  background-color: #e6f0e6;
+  margin-left: 1rem;
+  border-radius: 0.5rem;
+  align-self: flex-start; /* 修正：不隨內容撐滿全高 */
 }
 
-/* 區塊 */
-.section {
-  margin: 2rem auto;
-  width: 90%;
-  max-width: 1000px;
-  text-align: center;
+.sidebar h3 { margin-top: 0; }
+.sidebar ul { list-style: none; padding: 0; }
+.sidebar li {
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 0.3rem;
+  transition: background-color 0.2s;
+}
+.sidebar li:hover { background-color: #8ef4ff; }
+
+/* 側欄 active 狀態 */
+.sidebar li.active {
+  background-color: #00117C;
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(0, 200, 100, 0.7);
 }
 
-/* 搜尋框 */
-.search-wrapper {
-  position: relative;
-  display: inline-block;
-  width: 75%; /* 三張字卡寬度 */
+/* ============================
+   主內容
+   ============================ */
+.content {
+  flex: 1;
+  margin: 0 auto;
+  padding: 1rem;
 }
 
-.search-wrapper input[type="text"] {
-  padding: 0.8rem 2.5rem 0.8rem 0.8rem;
+/* ============================
+   搜尋框（修正語法錯誤）
+   ============================ */
+.search-box input[type="text"] {
+  padding: 0.8rem;
   width: 100%;
   font-size: 1.1rem;
-  border: 2px solid #2a5d34;
+  border: 2px solid #00117C;
   border-radius: 0.5rem;
-  box-sizing: border-box;
+  /* 已移除孤立的「0」語法錯誤 */
 }
 
-.search-wrapper button {
+.search-wrapper {
+  position: relative;
+}
+
+#searchIcon {
   position: absolute;
+  right: 10px;
   top: 50%;
-  right: 0.3rem;
   transform: translateY(-50%);
-  border: none;
-  background: transparent;
   cursor: pointer;
+  transition: filter 0.3s;
 }
 
-.search-wrapper button img {
-  width: 24px;
-  height: 24px;
-  transition: all 0.3s ease;
+/* 放大鏡 hover（合併重複宣告）*/
+#searchIcon:hover {
+  filter: brightness(2);
+  text-shadow: 0 0 8px #00ffcc;
 }
 
-.search-wrapper button:hover img {
-  box-shadow: 0 0 8px 2px #2a5d34;
-  transform: scale(1.1);
-}
-
-/* 自動建議 */
+/* ============================
+   自動建議下拉（修正定位）
+   ============================ */
 ul#suggestions {
-  position: absolute;
-  top: 105%;
-  left: 0;
-  right: 0;
-  max-height: 200px;
-  overflow-y: auto;
   margin: 0;
   padding: 0;
-  background-color: #e6f0e6;
-  border: 2px solid #2a5d34;
-  border-radius: 0.5rem;
-  display: none;
+  list-style: none;
+  position: absolute; /* 修正：改為 absolute，不擠壓下方內容 */
   z-index: 10;
+  max-height: 200px;
+  overflow-y: auto;
+  width: 100%;
+  background: #fff;
+  border-radius: 0.3rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 ul#suggestions li {
-  list-style: none;
-  padding: 0.5rem;
+  padding: 8px;
+  background-color: #e6f0e6;
+  margin-bottom: 0.2rem;
   cursor: pointer;
-  border-bottom: 1px solid #c4e0c4;
+  border-radius: 0.3rem;
+  opacity: 0;
+  animation: fadeIn 0.3s forwards;
+  transition: background 0.2s, box-shadow 0.2s, color 0.2s;
 }
 
-ul#suggestions li:hover {
-  background-color: #c4e0c4;
+/* 搜尋建議 hover & active（合併兩個衝突宣告，統一為橘色風格）*/
+ul#suggestions li:hover,
+ul#suggestions li.active {
+  background: #fff4e0;
+  box-shadow: 0 0 10px rgba(255, 165, 0, 0.8);
+  color: #ff8c00;
+  font-weight: bold;
 }
 
-/* 卡片佈局 */
+/* ============================
+   卡片佈局
+   ============================ */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -117,11 +161,12 @@ ul#suggestions li:hover {
 
 .feature-card {
   background-color: #fff;
-  border: 2px solid #2a5d34; /* 綠色外框 */
+  border: 2px solid #00117C;
   border-radius: 0.7rem;
   padding: 1rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* transition 只在非 hover 時有效，hover 時改用 animation */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease, border-color 0.3s;
 }
 
 .feature-card img {
@@ -135,29 +180,91 @@ ul#suggestions li:hover {
 .feature-card p {
   font-weight: bold;
   margin: 0.5rem 0;
-}
-
-/* hover 小動畫 + 發光綠邊 */
-.feature-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px 3px #2a5d34;
-  border-color: #00ff44;
-}
-
-/* footer */
-footer {
-  background-color: #2a5d34;
-  color: #fff;
-  padding: 1rem 0;
   text-align: center;
+  color: #1f3d2b;
 }
 
-footer .social-icons a {
+/* 卡片 hover / active（合併重複宣告，統一使用呼吸燈 animation）*/
+.feature-card:hover,
+.feature-card.active {
+  animation: pulseGlowCard 1.5s infinite;
+  border-color: #ff5100;
+  filter: brightness(1.15);
+}
+
+/* ============================
+   Footer
+   ============================ */
+footer {
+  background-color: #00117C;
+  color: #fdf6f0;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+footer .social img {
+  width: 32px;
+  height: 32px;
   margin: 0 0.5rem;
+  transition: transform 0.3s, filter 0.3s;
 }
 
-footer .social-icons img {
-  width: 28px;
-  height: 28px;
-  vertical-align: middle;
+footer .social img:hover {
+  transform: scale(1.2);
+  filter: brightness(1.5);
+}
+
+/* ============================
+   動畫定義
+   ============================ */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlowCard {
+  0%   { box-shadow: 0 0 6px rgba(255, 80, 0, 0.6);  transform: scale(1); }
+  50%  { box-shadow: 0 0 18px rgba(255, 80, 0, 1);   transform: scale(1.05); }
+  100% { box-shadow: 0 0 6px rgba(255, 80, 0, 0.6);  transform: scale(1); }
+}
+
+/* ============================
+   手機版 RWD（max-width: 768px）
+   ============================ */
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    margin: 0 0 1rem 0;
+    border-radius: 0.5rem;
+    align-self: auto; /* RWD 下取消 flex-start 限制 */
+  }
+
+  .sidebar li {
+    padding: 0.6rem;
+    font-size: 0.95rem;
+  }
+
+  .content {
+    margin: 0 auto;
+    width: 95%;
+    padding: 0.5rem;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.8rem;
+  }
+
+  .search-wrapper input {
+    font-size: 1rem;
+  }
+
+  ul#suggestions {
+    max-height: 150px;
+  }
 }
