@@ -11,64 +11,107 @@
 <header class="hero">
   <div class="overlay">
     <h1>🚗 我的專屬地點導航</h1>
-    <p>快速搜尋、立即導航，讓出行更方便</p>
+    <p>快速搜尋、立即導航，出行方便</p>
   </div>
 </header>
 
 <main>
-  <!-- 搜尋區 -->
-  <section class="section search-box">
-    <h2>搜尋地點</h2>
-    <div class="search-wrapper">
-      <input type="text" id="location" placeholder="輸入地點名稱">
-      <button id="navigateBtn">
-        <img src="https://img.icons8.com/ios-filled/50/000000/search--v1.png" alt="搜尋">
-      </button>
-      <ul id="suggestions"></ul>
-    </div>
-  </section>
+  <div class="main-container">
+    <!-- 左側側欄 -->
+    <aside class="sidebar">
+      <h3>地點分組</h3>
+      <ul id="categoryList">
+        <li data-category="全部">全部</li>
+        <li data-category="停車場">停車場</li>
+        <li data-category="住宿">住宿</li>
+        <li data-category="餐飲">餐飲</li>
+        <li data-category="百貨公司、商場">百貨公司、商場</li>
+      </ul>
+    </aside>
 
-  <!-- 快速導航卡片 -->
-  <section class="section quick-nav">
-    <h2>常用地點</h2>
-    <div class="card-grid">
-      <div class="feature-card">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUTV-xwQm12X0HkQ2MZQz4XUzJVY-LM2-TIQ&s" alt="文英">
-        <p>文英宿舍</p>
+    <!-- 中間主內容 -->
+    <section class="content">
+      <!-- 搜尋區 -->
+      <div class="search-box">
+        <h2>搜尋地點</h2>
+        <div class="search-wrapper">
+          <input type="text" id="location" placeholder="輸入地點名稱">
+          <span id="searchIcon">🔍</span>
+        </div>
+        <ul id="suggestions"></ul>
       </div>
-      <div class="feature-card">
-        <img src="https://hips.hearstapps.com/hmg-prod/images/fotjjenojet-1635314120.jpg?crop=0.498xw:0.993xh;0,0&resize=640:*" alt="停車場">
-        <p>上班停車</p>
-      </div>
-      <div class="feature-card">
-        <img src="https://www.bmwhk.com/content/dam/bmw/common/all-models/m-series/x6m/2019/inspire/bmw-x6-m-inspire-next-page-teaser.jpg" alt="停車場">
-        <p>下班停車</p>
-      </div>
-      <div class="feature-card">
-        <img src="https://www.mansory.com/cdn-cgi/image/format=avif,quality=90/https://cdn.prod.website-files.com/661d6e0d2e84ef511db18f17/6818bd66e807a051a942382a_Audi%2520RS7-Exterior_-_Main_image-001.webp" alt="停車場">
-        <p>五權立體停車場</p>
-      </div>
-      <div class="feature-card">
-        <img src="https://hips.hearstapps.com/hmg-prod/images/2025-mercedes-amg-g63-180-6890d45ec2f03.jpg?crop=0.735xw:0.551xh;0.0911xw,0.376xh&resize=640:*" alt="公司">
-        <p>公司</p>
-      </div>
-      <div class="feature-card">
-        <img src="https://img.supermoto8.com/images/article/f4fa4085782163a406053cd6769c5fd22.jpg" alt="回家">
-        <p>家</p>
-      </div>
-    </div>
-  </section>
+
+      <!-- 快速導航卡片 -->
+      <section class="section quick-nav">
+        <h2>常用地點</h2>
+        <div class="card-grid">
+          <div class="feature-card" data-name="逢甲租屋處" data-category="住宿,全部">
+            <img src="https://s1.aigei.com/prevfiles/e23efc5ff6904d849534cb476cf636ea.png?e=2051020800&token=P7S2Xpzfz11vAkASLTkfHN7Fw-oOZBecqeJaxypL:WZX0hrbCItZ5Q3uKfW22YN8vjBw=" alt="住宿">
+            <p>逢甲租屋處</p>
+          </div>
+          <div class="feature-card" data-name="錠嵂 中十七" data-category="全部">
+            <img src="https://p3-pc-sign.douyinpic.com/tos-cn-i-dy/d405f5226d6b444bbee071db08ab931a~tplv-dy-aweme-images:q75.webp?biz_tag=aweme_images&from=327834062&lk3s=138a59ce&s=PackSourceEnum_SEARCH&sc=image&se=false&x-expires=1779638400&x-signature=vplZtFTYC7lG49moRyY75crnpFw%3D" alt="全部">
+            <p>錠嵂 中十七</p>
+          </div>
+          <div class="feature-card" data-name="上下班停車" data-category="停車場,全部">
+            <img src="https://hips.hearstapps.com/hmg-prod/images/fotjjenojet-1635314120.jpg?crop=0.498xw:0.993xh;0,0&resize=640:*" alt="停車場">
+            <p>上下班停車</p>
+          </div>
+          <div class="feature-card" data-name="五權立體停車場" data-category="停車場,全部">
+            <img src="https://www.mansory.com/cdn-cgi/image/format=avif,quality=90/https://cdn.prod.website-files.com/661d6e0d2e84ef511db18f17/6818bd66e807a051a942382a_Audi%2520RS7-Exterior_-_Main_image-001.webp" alt="停車場">
+            <p>五權立體停車場</p>
+          </div>
+          <div class="feature-card" data-name="家樂福 豐原" data-category="百貨公司、商場,全部">
+            <img src="https://hips.hearstapps.com/hmg-prod/images/2025-mercedes-amg-g63-180-6890d45ec2f03.jpg?crop=0.735xw:0.551xh;0.0911xw,0.376xh&resize=640:*" alt="百貨公司、商場">
+            <p>家樂福 豐原</p>
+          </div>
+          <div class="feature-card" data-name="家" data-category="住宿,全部">
+            <img src="https://img.supermoto8.com/images/article/f4fa4085782163a406053cd6769c5fd22.jpg" alt="回家">
+            <p>家</p>
+          </div>
+          <div class="feature-card" data-name="逢甲常停的地方" data-category="停車場,全部">
+            <img src="https://www.topgear.com/sites/default/files/cars-car/image/2024/10/1-Lamborghini-Urus-SE-review-2024.jpg?w=1280&h=720" alt="停車場">
+            <p>逢甲常停的地方</p>
+          </div>
+          <div class="feature-card" data-name="大慶 30停車場" data-category="停車場,全部">
+            <img src="https://www.europeanprestige.co.uk/blobs/stock/622/images/9fcf5566-e1bb-4d12-80e3-3614d6f690cf/hi4a2745.jpg?width=2000&height=1333" alt="停車場">
+            <p>大慶 30停車場</p>
+          </div>
+          <div class="feature-card" data-name="豐原大車河站3" data-category="停車場,全部">
+            <img src="https://larte-design.com/storage/app/media/kits/bmw/x6m-lci/slider/new/model/bmw-x6m-facelift-appearance-package.webp" alt="停車場">
+            <p>豐原大車河站3</p>
+          </div>
+          <div class="feature-card" data-name="石頭 鹽酥雞" data-category="餐飲,全部">
+            <img src="https://uncrate.com/p/2024/01/bmw-m1-1.jpg" alt="餐飲">
+            <p>石頭 鹽酥雞</p>
+          </div>
+          <div class="feature-card" data-name="旱溪夜市" data-category="餐飲,全部">
+            <img src="https://hips.hearstapps.com/hmg-prod/images/bmw-m2-zandvoort-blue-046-6426fb231b11c.jpg?crop=1.00xw:0.847xh;0,0.0536xh&resize=1800:*" alt="餐飲">
+            <p>旱溪夜市</p>
+          </div>
+          <div class="feature-card" data-name="蔚藍海T2咖啡車" data-category="餐飲,全部">
+            <img src="https://img-ik.cars.co.za/news-site-za/images/2021/01/EM3f.jpg?tr=w-1200,h-800" alt="餐飲">
+            <p>蔚藍海T2咖啡車</p>
+          </div>
+          <div class="feature-card" data-name="平祿壽司松竹店" data-category="餐飲,全部">
+            <img src="https://www.topgear.com/sites/default/files/images/news-article/2021/06/514af9cc9cb2e64c58703910ef39e443/p90424815_highres_maisach-ger-2nd-june.jpg" alt="餐飲">
+            <p>平祿壽司松竹店</p>
+          </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </div>
 </main>
 
+<!-- 底部社群 -->
 <footer>
-  <div class="footer-container">
-    <p>©2025 Made By AlbertChen</p>
-    <div class="social-icons">
-      <a href="#"><img src="https://img.icons8.com/ios-filled/50/ffffff/facebook-new.png" alt="Facebook"></a>
-      <a href="#"><img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" alt="Instagram"></a>
-      <a href="#"><img src="https://img.icons8.com/ios-filled/50/ffffff/discord-logo.png" alt="Discord"></a>
-    </div>
+  <div class="social">
+    <a href="https://www.facebook.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="FB"></a>
+    <a href="https://www.instagram.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="IG"></a>
+    <a href="https://discord.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord"></a>
   </div>
+  <p>©2026 MADE BY ALBERTCHEN</p>
 </footer>
 
 <script src="script.js"></script>
